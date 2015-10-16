@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3088B51D1BCF14DE00FF9C2E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3088B51C1BCF14DE00FF9C2E /* main.swift */; };
-		3088B5241BCF14F300FF9C2E /* money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3088B5231BCF14F300FF9C2E /* money.swift */; settings = {ASSET_TAGS = (); }; };
-		3088B5261BCF150900FF9C2E /* person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3088B5251BCF150900FF9C2E /* person.swift */; settings = {ASSET_TAGS = (); }; };
-		3088B5281BCF151000FF9C2E /* family.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3088B5271BCF151000FF9C2E /* family.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,9 +25,6 @@
 /* Begin PBXFileReference section */
 		3088B5191BCF14DE00FF9C2E /* domainModeling */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = domainModeling; sourceTree = BUILT_PRODUCTS_DIR; };
 		3088B51C1BCF14DE00FF9C2E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		3088B5231BCF14F300FF9C2E /* money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = money.swift; sourceTree = "<group>"; };
-		3088B5251BCF150900FF9C2E /* person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = person.swift; sourceTree = "<group>"; };
-		3088B5271BCF151000FF9C2E /* family.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = family.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				3088B51C1BCF14DE00FF9C2E /* main.swift */,
-				3088B5231BCF14F300FF9C2E /* money.swift */,
-				3088B5251BCF150900FF9C2E /* person.swift */,
-				3088B5271BCF151000FF9C2E /* family.swift */,
 			);
 			path = domainModeling;
 			sourceTree = "<group>";
@@ -127,9 +118,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3088B5241BCF14F300FF9C2E /* money.swift in Sources */,
-				3088B5281BCF151000FF9C2E /* family.swift in Sources */,
-				3088B5261BCF150900FF9C2E /* person.swift in Sources */,
 				3088B51D1BCF14DE00FF9C2E /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
