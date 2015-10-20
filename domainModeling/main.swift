@@ -12,6 +12,18 @@ protocol CustomStringConvertible {
     var description: String { get }
 }
 
+protocol Mathematics {
+    func mathematicsAdd(m: Money) -> Double
+    func mathematicsSub(m: Money) -> Double
+}
+
+extension Double {
+    var USD: Money { return Money(a: self, c: Currency.USD) }
+    var GBP: Money { return Money(a: self, c: Currency.GBP) }
+    var EUR: Money { return Money(a: self, c: Currency.EUR) }
+    var CAN: Money { return Money(a: self, c: Currency.CAN) }
+}
+
 enum Currency {
     case USD
     case GBP
@@ -19,7 +31,7 @@ enum Currency {
     case CAN
 }
 
-struct Money: CustomStringConvertible {
+struct Money: CustomStringConvertible, Mathematics {
     var amount : Double
     var currency : Currency
     
@@ -35,6 +47,23 @@ struct Money: CustomStringConvertible {
     
     var description : String {
         return String(currency) + String(amount)
+    }
+    
+    func mathematicsAdd(m: Money) -> Double {
+        if m.currency == currency {
+            return amount + m.amount
+        } else {
+            return convertBack(currency, am: convertToUSD(self) + convertToUSD(m))
+            
+        }
+    }
+    
+    func mathematicsSub(m: Money) -> Double {
+        if m.currency == currency {
+            return amount - m.amount
+        } else {
+            return convertBack(currency, am: convertToUSD(self) - convertToUSD(m))
+        }
     }
     
     func convertToUSD(m : Money) -> Double {
@@ -245,9 +274,17 @@ print(p3.description)
 print("--------------")
 print(f1.description)
 
-protocol Mathematics {
-    
-}
+//Mathematics Unit Tests
+print(String(m1.mathematicsAdd(m2)) + "=" + String(m1.add(m2)))
+print(String(m5.mathematicsAdd(m3)) + "=" + String(m5.add(m3)))
+print(String(m2.mathematicsAdd(m6)) + "=" + String(m2.add(m6)))
+print(String(m4.mathematicsAdd(m1)) + "=" + String(m4.add(m1)))
+
+//Double Extension Unit Tests
+print("$3 equals \(3.USD.amount) Dollars")
+print("£6 equals \(6.GBP.amount) Pounds")
+print("€9 equals \(9.EUR.amount) Euros")
+print("C$12 equals \(12.CAN.amount) Canadian Dollars")
 
 
 //print("MONEY TESTS")
@@ -265,12 +302,6 @@ protocol Mathematics {
 //print("sub CAN from EUR: " + String(m5.sub(m6)))
 //
 //print("---------------------------")
-//var j1 = Job(t: "Mall Cop", m: Money(a: 20000, c: Currency.USD ), b: false)
-//var j2 = Job(t: "Sales assistant", m:m1, b: true)
-//var j3 = Job(t: "Mall Owner", m: Money(a: 400000, c: Currency.USD ), b: false)
-//var j4 = Job(t: "Software Dev", m: Money(a: 60000, c: Currency.USD ), b: false)
-//var j5 = Job(t: "Tech Intern", m: Money(a: 25, c: Currency.USD ), b: true)
-//
 //print("JOB TESTS")
 //print("calculate income for annual salary job w/ parameter: " + String(j1.calculateIncome(100)))
 //print("calculate income for annual salary job w/o parameter: " + String(j1.calculateIncome(nil))) //should be same as with
@@ -282,41 +313,20 @@ protocol Mathematics {
 //print("give 10% raise to hourly: " + String(j5.salary.amount))
 //
 //print("---------------------------")
-//var p1 = Person(first: "Paul", last: "Blart", howOld: 40, work: j1, sp: nil)
-//var p2 = Person(first: "John", last: "Doe", howOld: 30, work: j2, sp: nil)
-//var p3 = Person(first: "Jane", last: "Doe", howOld: 35, work: j3, sp: p2)
-//p2.spouse = p3
-//var p4 = Person(first: "Jack", last: "Blart", howOld: 40, work: nil, sp: nil)
-//var p5 = Person(first: "Jill", last: "Blart", howOld: 40, work: j5, sp: p4)
-//p4.spouse = p5
-//var p6 = Person(first: "Lil Jimmy", last: "Blart", howOld: 15, work: j2, sp: p3)
-//var p7 = Person(first: "Lil Jenna", last: "Blart", howOld: 17, work: j2, sp: p2)
-//var p8 = Person(first: "Lil Jovanovich", last: "Blart", howOld: 18, work: nil, sp: nil)
-//
 //print("Person Tests")
 //print(p1.toString())
 //print(p2.toString())
 //print(p3.toString())
 //print(p4.toString())
 //print(p5.toString())
-//
 //print(p6.toString())
 //print("Note, 15 year old Jimmy has no job or spouse, even though passed one")
-//
 //print(p7.toString())
 //print("Note, 17 year old Jenna has a job but no spouse, even though passed one")
-//
 //print(p8.toString())
 //print("Note, Jovanovich was not passed a spouse or job and the case was handled")
 //
 //print("---------------------------")
-//
-//var f1 = Family(people: [p1, p4, p5, p6, p7, p8])
-//var f2 = Family(people: [p2, p3])
-//var f3 = Family(people: nil)
-//var f4 = Family(people: [p6, p7, p8])
-//
-//
 //print("Family Tests")
 //print("F1 family size before having child: " + String(f1.members.count))
 //f1.haveChild("Paully", lastName: "Blart")
